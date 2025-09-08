@@ -1,16 +1,24 @@
 
-# Build Hero™ – Vercel-Ready Subscription Landing Page
+# BuildHero – Launch-Ready MVP
 
-This is a Stripe-powered subscription site for Build Hero™.
+BuildHero empowers homeowners to manage construction projects like pros. This launch-ready MVP includes:
+- Smart Estimator
+- Project Upload Form
+- Investor Dashboard
+- Landing Page with SEO
+- Stripe-Ready (optional upgrade)
 
-## Features
-- Stripe Checkout integration
-- Buttons for Pro and Investor+ plans
-- Success and cancel redirect pages
-- Fully deployable to Vercel or Netlify
+## 🚀 How to Launch
 
-## Setup
-1. Replace the mock Stripe public key with your real one.
-2. Replace mock `price_` IDs with real Stripe subscription prices.
-3. Upload to GitHub.
-4. Deploy via Vercel (https://vercel.com/new).
+1. Unzip the files.
+2. Push to a GitHub repo.
+3. Deploy to [Vercel](https://vercel.com/new).
+
+## Files
+
+- `index.html`: Landing page
+- `dashboard_user.html`: User dashboard
+- `dashboard_investor.html`: Investor dashboard
+- `README.md`: This file
+
+Let's build the future 🏗️💰

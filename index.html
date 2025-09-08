@@ -2,74 +2,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Build Hero™ | Homebuilding Made Easy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>BuildHero - Empower Your Build</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: sans-serif; margin: 0; background: #f2f2f2; color: #222; }
-    header { background: #0f172a; color: white; padding: 2em; text-align: center; }
-    header h1 { font-size: 2.5em; margin: 0 0 0.5em; }
-    header p { font-size: 1.2em; }
-    section { padding: 2em; background: white; margin: 1em; border-radius: 12px; }
-    .cta { background: #28a745; color: white; padding: 1em 2em; border-radius: 10px; text-decoration: none; display: inline-block; margin-top: 1em; }
-    h2 { color: #0f172a; }
-    input, textarea { width: 100%; padding: 10px; margin-top: 0.5em; border-radius: 6px; border: 1px solid #ccc; }
-    button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 8px; margin-top: 1em; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f0f0f5; }
+    header { background: #1e3a8a; color: white; padding: 2em; text-align: center; }
+    section { padding: 2em; max-width: 1000px; margin: auto; background: white; border-radius: 12px; margin-top: 2em; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1, h2 { color: #1e3a8a; }
+    footer { background: #1e3a8a; color: white; text-align: center; padding: 1em; margin-top: 3em; }
+    .button { background: #1e3a8a; color: white; padding: 1em 2em; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5em; }
+    .card { padding: 1.5em; background: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
   </style>
 </head>
 <body>
   <header>
-    <h1>Build Your Home Without a GC</h1>
-    <p>Smart tools, investor connections, and cost calculators — all in one platform.</p>
-    <a class="cta" href="#start">Start Free</a>
+    <h1>🏗️ BuildHero</h1>
+    <p>Your personal project manager for building a home</p>
   </header>
 
-  <section id="estimator">
+  <section>
     <h2>📐 Smart Material Estimator</h2>
-    <p>Enter your room dimensions to estimate materials needed:</p>
-    <label>Room Width (ft): <input type="number" id="width"></label><br><br>
-    <label>Room Length (ft): <input type="number" id="length"></label><br><br>
-    <button onclick="estimate()">Estimate</button>
-    <div id="output" style="margin-top: 1em;"></div>
+    <p>Enter your room dimensions to estimate the materials needed.</p>
+    <form>
+      <label>Room Length (ft): <input type="number"></label><br>
+      <label>Room Width (ft): <input type="number"></label><br>
+      <button class="button" type="submit">Estimate</button>
+    </form>
   </section>
 
-  <section id="investor">
-    <h2>📤 Upload Your Project for Investors</h2>
-    <p>Upload your budget, floorplan, and pitch to attract funding.</p>
-    <input type="text" placeholder="Project Title"><br><br>
-    <textarea placeholder="Describe your project..."></textarea><br><br>
-    <input type="file"><br>
-    <button>Submit (Pro Only)</button>
+  <section>
+    <h2>📤 Upload Your Project</h2>
+    <p>Get visibility and funding by uploading your project for potential investors to view.</p>
+    <button class="button" onclick="window.location='dashboard_user.html'">Upload Now</button>
   </section>
 
-  <section id="guide">
-    <h2>📚 Step-by-Step Building Guide</h2>
-    <ul>
-      <li>✔️ Step 1: Site Prep + Permits</li>
-      <li>✔️ Step 2: Foundation & Framing</li>
-      <li>✔️ Step 3: Roofing + Siding</li>
-      <li>✔️ Step 4: Electrical, HVAC, Plumbing</li>
-      <li>✔️ Step 5: Interior Finishes & Inspection</li>
-    </ul>
-    <p><em>Pro subscribers unlock full guides with inspector notes and regional tips.</em></p>
+  <section class="grid">
+    <div class="card">
+      <h3>🧮 Estimate</h3>
+      <p>Calculate material and cost requirements by entering simple room data.</p>
+    </div>
+    <div class="card">
+      <h3>👷 Manage Projects</h3>
+      <p>Track your build from idea to completion — all in one place.</p>
+    </div>
+    <div class="card">
+      <h3>💰 Investor Match</h3>
+      <p>Submit your project and get connected with potential backers.</p>
+    </div>
+    <div class="card">
+      <h3>⭐ Pro Access</h3>
+      <p>Unlock premium tools, reports, and support to maximize your build.</p>
+    </div>
   </section>
 
-  <script>
-    function estimate() {
-      const w = parseFloat(document.getElementById('width').value);
-      const l = parseFloat(document.getElementById('length').value);
-      if (isNaN(w) || isNaN(l)) return document.getElementById('output').innerText = 'Please enter valid dimensions.';
-      const area = w * l;
-      const drywall = Math.ceil(area / 32);
-      const paint = Math.ceil(area / 350);
-      const studs = Math.ceil((w + l) * 2 / 1.5);
-      document.getElementById('output').innerHTML = `
-        <strong>Estimated Materials:</strong><br>
-        🧱 Drywall Sheets: ${drywall}<br>
-        🎨 Gallons of Paint: ${paint}<br>
-        🪵 2x4 Studs: ${studs}
-      `;
-    }
-  </script>
+  <footer>
+    <p>© 2025 BuildHero. All rights reserved.</p>
+  </footer>
 </body>
 </html>
