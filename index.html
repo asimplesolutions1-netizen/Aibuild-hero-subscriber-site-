@@ -3,37 +3,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Build Hero™ | Subscribe</title>
+  <title>Build Hero™ | Homebuilding Made Easy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://js.stripe.com/v3/"></script>
   <style>
-    body { font-family: sans-serif; background: #f2f2f2; padding: 40px; text-align: center; }
-    h1 { font-size: 2.5em; margin-bottom: 0.2em; }
-    p { margin-bottom: 1em; }
-    button { padding: 12px 24px; font-size: 1em; margin: 10px; border: none; border-radius: 8px; cursor: pointer; }
-    .pro { background: #007bff; color: white; }
-    .investor { background: #28a745; color: white; }
+    body { font-family: sans-serif; margin: 0; background: #f2f2f2; color: #222; }
+    header { background: #0f172a; color: white; padding: 2em; text-align: center; }
+    header h1 { font-size: 2.5em; margin: 0 0 0.5em; }
+    header p { font-size: 1.2em; }
+    section { padding: 2em; background: white; margin: 1em; border-radius: 12px; }
+    .cta { background: #28a745; color: white; padding: 1em 2em; border-radius: 10px; text-decoration: none; display: inline-block; margin-top: 1em; }
+    h2 { color: #0f172a; }
+    input, textarea { width: 100%; padding: 10px; margin-top: 0.5em; border-radius: 6px; border: 1px solid #ccc; }
+    button { padding: 10px 16px; background: #0f172a; color: white; border: none; border-radius: 8px; margin-top: 1em; }
   </style>
 </head>
 <body>
-  <h1>Subscribe to Build Hero™</h1>
-  <p>Choose your plan and take control of your project.</p>
-  <button class="pro" onclick="subscribe('price_mock_pro')">Subscribe to Pro - $29/mo</button>
-  <button class="investor" onclick="subscribe('price_mock_investor')">Subscribe to Investor+ - $79/mo</button>
+  <header>
+    <h1>Build Your Home Without a GC</h1>
+    <p>Smart tools, investor connections, and cost calculators — all in one platform.</p>
+    <a class="cta" href="#start">Start Free</a>
+  </header>
+
+  <section id="estimator">
+    <h2>📐 Smart Material Estimator</h2>
+    <p>Enter your room dimensions to estimate materials needed:</p>
+    <label>Room Width (ft): <input type="number" id="width"></label><br><br>
+    <label>Room Length (ft): <input type="number" id="length"></label><br><br>
+    <button onclick="estimate()">Estimate</button>
+    <div id="output" style="margin-top: 1em;"></div>
+  </section>
+
+  <section id="investor">
+    <h2>📤 Upload Your Project for Investors</h2>
+    <p>Upload your budget, floorplan, and pitch to attract funding.</p>
+    <input type="text" placeholder="Project Title"><br><br>
+    <textarea placeholder="Describe your project..."></textarea><br><br>
+    <input type="file"><br>
+    <button>Submit (Pro Only)</button>
+  </section>
+
+  <section id="guide">
+    <h2>📚 Step-by-Step Building Guide</h2>
+    <ul>
+      <li>✔️ Step 1: Site Prep + Permits</li>
+      <li>✔️ Step 2: Foundation & Framing</li>
+      <li>✔️ Step 3: Roofing + Siding</li>
+      <li>✔️ Step 4: Electrical, HVAC, Plumbing</li>
+      <li>✔️ Step 5: Interior Finishes & Inspection</li>
+    </ul>
+    <p><em>Pro subscribers unlock full guides with inspector notes and regional tips.</em></p>
+  </section>
 
   <script>
-    const stripe = Stripe("pk_test_mockedPublicKey123");
-    function subscribe(priceId) {
-      stripe.redirectToCheckout({
-        lineItems: [{ price: priceId, quantity: 1 }],
-        mode: "subscription",
-        successUrl: window.location.origin + "/success.html",
-        cancelUrl: window.location.origin + "/cancel.html"
-      }).then(function (result) {
-        if (result.error) {
-          alert(result.error.message);
-        }
-      });
+    function estimate() {
+      const w = parseFloat(document.getElementById('width').value);
+      const l = parseFloat(document.getElementById('length').value);
+      if (isNaN(w) || isNaN(l)) return document.getElementById('output').innerText = 'Please enter valid dimensions.';
+      const area = w * l;
+      const drywall = Math.ceil(area / 32);
+      const paint = Math.ceil(area / 350);
+      const studs = Math.ceil((w + l) * 2 / 1.5);
+      document.getElementById('output').innerHTML = `
+        <strong>Estimated Materials:</strong><br>
+        🧱 Drywall Sheets: ${drywall}<br>
+        🎨 Gallons of Paint: ${paint}<br>
+        🪵 2x4 Studs: ${studs}
+      `;
     }
   </script>
 </body>
