@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Build Hero™ | Subscribe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    body { font-family: sans-serif; background: #f2f2f2; padding: 40px; text-align: center; }
+    h1 { font-size: 2.5em; margin-bottom: 0.2em; }
+    p { margin-bottom: 1em; }
+    button { padding: 12px 24px; font-size: 1em; margin: 10px; border: none; border-radius: 8px; cursor: pointer; }
+    .pro { background: #007bff; color: white; }
+    .investor { background: #28a745; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Subscribe to Build Hero™</h1>
+  <p>Choose your plan and take control of your project.</p>
+  <button class="pro" onclick="subscribe('price_mock_pro')">Subscribe to Pro - $29/mo</button>
+  <button class="investor" onclick="subscribe('price_mock_investor')">Subscribe to Investor+ - $79/mo</button>
+
+  <script>
+    const stripe = Stripe("pk_test_mockedPublicKey123");
+    function subscribe(priceId) {
+      stripe.redirectToCheckout({
+        lineItems: [{ price: priceId, quantity: 1 }],
+        mode: "subscription",
+        successUrl: window.location.origin + "/success.html",
+        cancelUrl: window.location.origin + "/cancel.html"
+      }).then(function (result) {
+        if (result.error) {
+          alert(result.error.message);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
