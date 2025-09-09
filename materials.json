@@ -1,0 +1,4 @@
+[
+        {"name": "Drywall Sheet", "category": "Drywall", "price": 12.98, "sku": "HD123456", "affiliate_link": "#"},
+        {"name": "2x4 Lumber", "category": "Lumber", "price": 3.97, "sku": "HD234567", "affiliate_link": "#"}
+    ]

@@ -1,24 +1,20 @@
+# BuildHero Pro+
 
-# BuildHero – Launch-Ready MVP
+    ## Overview
+    BuildHero Pro+ is your all-in-one platform for home construction project planning, estimating, and funding.
 
-BuildHero empowers homeowners to manage construction projects like pros. This launch-ready MVP includes:
-- Smart Estimator
-- Project Upload Form
-- Investor Dashboard
-- Landing Page with SEO
-- Stripe-Ready (optional upgrade)
+    ## Files
+    - `index.html`: Landing page with smart estimator
+    - `dashboard.html`: User dashboard for project tracking
+    - `upload.html`: Submit your build idea for investor review
+    - `materials.json`: Starter material database (editable)
+    - `README.md`: Setup guide
 
-## 🚀 How to Launch
+    ## Deploy on Vercel
+    - Sign into Vercel, connect this repo, and deploy
 
-1. Unzip the files.
-2. Push to a GitHub repo.
-3. Deploy to [Vercel](https://vercel.com/new).
+    ## Monetization
+    - Add your Stripe and affiliate links into `index.html` buttons
 
-## Files
-
-- `index.html`: Landing page
-- `dashboard_user.html`: User dashboard
-- `dashboard_investor.html`: Investor dashboard
-- `README.md`: This file
-
-Let's build the future 🏗️💰
+    ## Affiliate System
+    - Replace `#` in materials.json with your real referral links
